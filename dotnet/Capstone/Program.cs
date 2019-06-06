@@ -1,12 +1,18 @@
 ﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using Capstone.Classes;
 
 namespace Capstone
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ReadInInputFile.InputInventory();
+            VendingMachine.PrintItems();
+            Console.WriteLine("hi");
+            Console.ReadLine();
         }
     }
 }
