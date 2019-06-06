@@ -6,5 +6,6 @@ namespace Capstone.Classes
 {
     public class Candy : Item
     {
+        public Candy(string name, decimal price) : base(name, price) { }
     }
 }

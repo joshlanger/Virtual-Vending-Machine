@@ -6,5 +6,7 @@ namespace Capstone.Classes
 {
     public class Chip : Item
     {
+        public Chip(string name, decimal price) : base (name, price) { }
+
     }
 }

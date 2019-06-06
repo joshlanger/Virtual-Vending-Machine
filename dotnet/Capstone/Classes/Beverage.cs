@@ -7,7 +7,9 @@ namespace Capstone
 {
     public class Beverage : Item
     {
-        Beverage Cola = new Beverage();
-        Stack<int> ColaQuantity = new Stack<int>();
+        public Beverage(string name, decimal price) : base(name, price) { }
+        
+        Stack<int> ColaStack = new Stack<int>();
+        
     }
 }
