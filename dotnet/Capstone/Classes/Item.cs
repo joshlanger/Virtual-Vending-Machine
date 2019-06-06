@@ -10,11 +10,11 @@ namespace Capstone
        protected string Name { get; set; }
        protected decimal Price { get; set; }
        Dictionary<string, Stack<Item>> VendingMachine = new Dictionary<string, Stack<Item>>();
-        public Item(string name, decimal price)
-        {
-            Name = name;
-            Price = price;
-        }
-        
+        //public Item (string name, decimal price)
+        //{
+        //    Name = name;
+        //    Price = price;
+        //}
+
     }
 }
