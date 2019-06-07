@@ -17,6 +17,10 @@ namespace Capstone
             
 
         }
+        public virtual string EatingSoundEffects()
+        {
+            return "";
+        }
 
     }
 }

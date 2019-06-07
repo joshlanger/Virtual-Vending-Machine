@@ -6,7 +6,10 @@ namespace Capstone.Classes
 {
     public static class VendingMachine
     {
-        public static decimal Balance { get; set; }
+        public static string MmmmGood { get; set; }
+        public static decimal InitialBalance { get; set; }
+        public static decimal CurrentBalance { get; set; }
+        public static bool BoughtDrink { get; set; }
         public static Dictionary<string, Stack<Item>> vendMachine = new Dictionary<string, Stack<Item>>();
         public static void PrintItems()
         {
@@ -33,24 +36,37 @@ namespace Capstone.Classes
             Console.WriteLine("(2) Purchase");
             choice = Console.ReadLine();
         }
-        public static void PurchaseItem(string selectedProducted, decimal fedMoney)
+        public static decimal PurchaseItem(string selectedProducted, decimal fedMoney)
         {
             if (vendMachine[selectedProducted].Count == 0)
             {
                 Console.WriteLine("Item Sold Out");
-            }
-            else
-            {
-                Item boughtItem = vendMachine[selectedProducted].Pop();
-                string Name = boughtItem.Name;
-                decimal Price = boughtItem.Price;
-                if (fedMoney >= Price)
-                {
-                    decimal change = fedMoney - Price;
-                    Balance = change;
-                }
+                return fedMoney;
             }
             
+            else
+            {
+                Item desiredItem = vendMachine[selectedProducted].Pop();
+                string Name = desiredItem.Name;
+                decimal Price = desiredItem.Price;
+                if (fedMoney >= Price)
+                {
+                    InitialBalance = fedMoney;
+                    fedMoney = fedMoney - Price;
+                    Console.WriteLine(fedMoney);
+                    return fedMoney;
+                }
+                if (fedMoney < Price)
+                {
+                    Console.WriteLine("Insufficient funds");
+                    vendMachine[selectedProducted].Push(desiredItem);
+                }
+                if(vendMachine[selectedProducted].Count<5)
+                {
+                    MmmmGood += desiredItem.EatingSoundEffects();
+                }
+            }
+            return fedMoney;
         }
     }
 }

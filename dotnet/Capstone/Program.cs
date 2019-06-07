@@ -11,6 +11,7 @@ namespace Capstone
         {
             try
             {
+                
                 bool isComplete = false;
                 //do { } while (!isComplete);
                 {
@@ -35,13 +36,14 @@ namespace Capstone
                     }
                     if (choice == "2")
                     {
+                        
                         decimal fedMoney = 0;
                         while (!isComplete)
                         { 
-                            if(fedMoney != 0)
-                            {
-                                isComplete = true;
-                            }
+                            //if(fedMoney != 0)
+                            //{
+                            //    isComplete = true;
+                            //}
                             Console.WriteLine("Purchase Menu");
                             Console.WriteLine("(1) Feed Money");
                             Console.WriteLine("(2) Select Product");
@@ -64,12 +66,15 @@ namespace Capstone
                                 string selectedProduct = Console.ReadLine();
                                 if(VendingMachine.vendMachine.ContainsKey(selectedProduct))
                                 {
-                                    VendingMachine.PurchaseItem(selectedProduct, fedMoney);
+                                    fedMoney = VendingMachine.PurchaseItem(selectedProduct, fedMoney);
+                                    
                                 }
+
                             }
                             if (selection == "3")
                             {
-
+                                isComplete = true;
+                                fedMoney = 0;
                             }
 
                         }
