@@ -14,8 +14,14 @@ namespace Capstone.Classes
                 Item foo = kvp.Value.Pop();
                 Console.WriteLine($"{kvp.Key}  {foo.Name} {foo.Price}");
                 kvp.Value.Push(foo);
-                //{ kvp.Value.Peek()}
+                
             }
+        }
+        
+        public static decimal FeedMoney(string fedMoneyString)
+        {
+            decimal fedMoney = decimal.Parse(fedMoneyString);
+            return fedMoney;
         }
     }
 }

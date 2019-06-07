@@ -52,6 +52,7 @@ namespace Capstone.Classes
                             }
                             
                         }
+                        int quantity = SlotStack.Count;
                         VendingMachine.vendMachine.Add(slot, SlotStack);
 
                     }
