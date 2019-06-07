@@ -30,7 +30,7 @@ namespace Capstone.Classes
                         string name = input[1];
                         decimal price = decimal.Parse(input[2]);
                         string itemType = input[3];
-                        int quantity = 0;
+                       
 
                         Stack<Item> SlotStack = new Stack<Item>();
                         for (int i = 0; i < 5; i++)
@@ -43,21 +43,21 @@ namespace Capstone.Classes
                             if (itemType == "Chip")
                             {
                                 SlotStack.Push(new Chip(name, price));
-                                quantity++;
+                                
                             }
                             if(itemType == "Gum")
                             {
                                 SlotStack.Push(new Gum(name, price));
-                                //quantity++;
+                                
                             }
                             if(itemType == "Candy")
                             {
                                 SlotStack.Push(new Candy(name, price));
-                                //quantity++;
+                                
                             }
                             
                         }
-                        int quantity = SlotStack.Count;
+                        
                         VendingMachine.vendMachine.Add(slot, SlotStack);
 
                     }

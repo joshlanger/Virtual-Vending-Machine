@@ -25,5 +25,34 @@ namespace Capstone.Classes
             decimal fedMoney = decimal.Parse(fedMoneyString);
             return fedMoney;
         }
+
+        public static void DispenseChange(decimal change, decimal fedMoney)
+        {
+            int quarters = 0;
+            int dimes = 0;
+            int nickle = 0;
+           
+            for(decimal i = fedMoney; i > 0.00M; i++)
+            {
+                if(fedMoney >= 0.25M)
+                {
+                    fedMoney = fedMoney - 0.25M;
+                    quarters++;
+                    
+                }
+                if (fedMoney < 0.25M && fedMoney >= 0.10M)
+                {
+                    fedMoney = fedMoney - 0.10M;
+                    dimes++;
+                }
+                if(fedMoney < 0.10M && fedMoney >= 0.05M)
+                {
+                    fedMoney = fedMoney - 0.05M;
+                    nickle++;
+                }
+                Console.WriteLine(quarters + " quarters, " + dimes + " dimes, and " + nickle + "nickles.");
+            }
+             
+        }
     }
 }
