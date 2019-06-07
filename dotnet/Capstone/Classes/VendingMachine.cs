@@ -6,6 +6,7 @@ namespace Capstone.Classes
 {
     public static class VendingMachine
     {
+        public static decimal Balance { get; set; }
         public static Dictionary<string, Stack<Item>> vendMachine = new Dictionary<string, Stack<Item>>();
         public static void PrintItems()
         {
@@ -24,6 +25,32 @@ namespace Capstone.Classes
         {
             decimal fedMoney = decimal.Parse(fedMoneyString);
             return fedMoney;
+        }
+        public static void MainMenu(string choice)
+        {
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("(1) Display items");
+            Console.WriteLine("(2) Purchase");
+            choice = Console.ReadLine();
+        }
+        public static void PurchaseItem(string selectedProducted, decimal fedMoney)
+        {
+            if (vendMachine[selectedProducted].Count == 0)
+            {
+                Console.WriteLine("Item Sold Out");
+            }
+            else
+            {
+                Item boughtItem = vendMachine[selectedProducted].Pop();
+                string Name = boughtItem.Name;
+                decimal Price = boughtItem.Price;
+                if (fedMoney >= Price)
+                {
+                    decimal change = fedMoney - Price;
+                    Balance = change;
+                }
+            }
+            
         }
     }
 }
