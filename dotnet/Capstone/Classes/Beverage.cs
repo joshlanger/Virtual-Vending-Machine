@@ -8,8 +8,11 @@ namespace Capstone
     public class Beverage : Item
     {
         public Beverage(string name, decimal price) : base(name, price) { }
-        
-        Stack<int> ColaStack = new Stack<int>();
-        
+
+        public override string EatingSoundEffects()
+        {
+            return "Glug Glug, Yum!";
+        }
+
     }
 }

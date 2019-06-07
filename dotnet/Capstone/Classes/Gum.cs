@@ -7,5 +7,9 @@ namespace Capstone.Classes
     public class Gum : Item
     {
         public Gum(string name, decimal price) : base(name, price) { }
+        public override string EatingSoundEffects()
+        {
+            return "Chew Chew, Yum!";
+        }
     }
 }
