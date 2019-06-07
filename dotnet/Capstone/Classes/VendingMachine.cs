@@ -15,10 +15,15 @@ namespace Capstone.Classes
                 Item foo = kvp.Value.Pop();
                 Console.WriteLine($"{kvp.Key.PadRight(5)} {foo.Name.PadRight(20)} {foo.Price} \t{kvp.Value.Count + 1}");
                 kvp.Value.Push(foo);
-                //{ kvp.Value.Peek()}
+                
             }
 
         }
         
+        public static decimal FeedMoney(string fedMoneyString)
+        {
+            decimal fedMoney = decimal.Parse(fedMoneyString);
+            return fedMoney;
+        }
     }
 }
