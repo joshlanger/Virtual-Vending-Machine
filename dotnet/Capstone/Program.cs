@@ -11,7 +11,7 @@ namespace Capstone
         {
             ReadInInputFile.InputInventory();
             VendingMachine.PrintItems();
-            Console.WriteLine("hi");
+            
             Console.ReadLine();
         }
     }

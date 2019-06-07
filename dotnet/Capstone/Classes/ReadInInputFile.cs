@@ -9,8 +9,8 @@ namespace Capstone.Classes
     {
        public static void InputInventory()
         {
-            string directory = @"C:\Users\Joshua Langer\capstone1\c-module-1-capstone-team-6\dotnet\etc";
-            //string directory = Environment.CurrentDirectory;
+            //string directory = @"C:\Users\Joshua Langer\capstone1\c-module-1-capstone-team-6\dotnet\etc";
+            string directory = Environment.CurrentDirectory;
             // string directory = @"C:\Users\Chad Campbell\Capstone\c - module - 1 - capstone - team - 6\dotnet\etc";
             string filename = "vendingmachine.csv";
             string fullPath = Path.Combine(directory, filename);

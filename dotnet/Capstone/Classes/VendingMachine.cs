@@ -11,8 +11,10 @@ namespace Capstone.Classes
         {
             foreach (KeyValuePair<string, Stack<Item>> kvp in vendMachine)
             {
-                Console.WriteLine($"{kvp.Key} + {kvp.Value.Peek()}");
-                
+                Item foo = kvp.Value.Pop();
+                Console.WriteLine($"{kvp.Key}  {foo.Name} {foo.Price}");
+                kvp.Value.Push(foo);
+                //{ kvp.Value.Peek()}
             }
         }
     }
