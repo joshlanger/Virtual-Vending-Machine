@@ -7,12 +7,15 @@ namespace Capstone
 {
     public class Item
     {
-       public string Name { get; protected set; }
-       public decimal Price { get; protected set; }
+        public string Name { get; protected set; }
+        public decimal Price { get; protected set; }
+       
         public Item(string name, decimal price)
         {
             Name = name;
             Price = price;
+            
+
         }
 
     }
