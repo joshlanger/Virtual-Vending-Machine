@@ -12,14 +12,21 @@ namespace Capstone.Classes
         public static bool BoughtDrink { get; set; }
         public static decimal Change { get; set; }
         public static Dictionary<string, Stack<Item>> vendMachine = new Dictionary<string, Stack<Item>>();
-        public static void PrintItems()
+        public static void DisplayItems()
         {
             Console.WriteLine("Slot".PadRight(6) + "Item".PadRight(20) + " Price".PadRight(10) + " Quantity");
             foreach (KeyValuePair<string, Stack<Item>> kvp in vendMachine)
             {
-                Item foo = kvp.Value.Pop();
-                Console.WriteLine($"{kvp.Key.PadRight(5)} {foo.Name.PadRight(20)} {foo.Price} \t{kvp.Value.Count + 1}");
-                kvp.Value.Push(foo);
+                if (kvp.Value.Count == 0)
+                {
+                    Console.WriteLine($"{kvp.Key.PadRight(5)} SOLD OUT");
+                }
+                else
+                {
+                    Item foo = kvp.Value.Pop();
+                    Console.WriteLine($"{kvp.Key.PadRight(5)} {foo.Name.PadRight(20)} {foo.Price} \t{kvp.Value.Count + 1}");
+                    kvp.Value.Push(foo);
+                }
                 
             }
 
@@ -35,7 +42,7 @@ namespace Capstone.Classes
         {
             int quarters = 0;
             int dimes = 0;
-            int nickle = 0;
+            int nickles = 0;
             Console.WriteLine("Dispensing change ($" + fedMoney +")");
             while (fedMoney != 0)
             {
@@ -53,7 +60,7 @@ namespace Capstone.Classes
                 if (fedMoney < 0.10M && fedMoney >= 0.05M)
                 {
                     fedMoney = fedMoney - 0.05M;
-                    nickle++;
+                    nickles++;
                 }
                 
             }
@@ -65,9 +72,9 @@ namespace Capstone.Classes
             {
                 Console.WriteLine(dimes + " dime(s)");
             }
-            if (nickle > 0)
+            if (nickles > 0)
             {
-                Console.WriteLine(nickle + " nickle(s)");
+                Console.WriteLine(nickles + " nickle(s)");
             }
             
             Console.WriteLine(MmmmGood);
@@ -98,7 +105,7 @@ namespace Capstone.Classes
                     fedMoney = fedMoney - Price;
                     Console.WriteLine(fedMoney);
                     Change = fedMoney;
-                    MmmmGood += desiredItem.EatingSoundEffects();
+                    MmmmGood += desiredItem.EatingSoundEffects() +" ";
                     return fedMoney;
                 }
                 if (fedMoney < Price)

@@ -28,7 +28,7 @@ namespace Capstone
 
                         if (choice == "1")
                         {
-                            VendingMachine.PrintItems();
+                            VendingMachine.DisplayItems();
                             Console.ReadLine();
                             VendingMachine.MainMenu(choice);
                         }
@@ -61,7 +61,7 @@ namespace Capstone
 
                             if (selection == "2")
                             {
-                                VendingMachine.PrintItems();
+                                VendingMachine.DisplayItems();
                                 Console.WriteLine("Please type your selection(ex. A1)");
                                 string selectedProduct = Console.ReadLine();
                                 if(VendingMachine.vendMachine.ContainsKey(selectedProduct))
