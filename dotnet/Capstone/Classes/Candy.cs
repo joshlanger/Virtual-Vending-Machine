@@ -9,7 +9,7 @@ namespace Capstone.Classes
         public Candy(string name, decimal price) : base(name, price) { }
         public override string EatingSoundEffects()
         {
-            return "Munch Munch, Yum!";
+            return @"Munch Munch, Yum!";
         }
     }
 }

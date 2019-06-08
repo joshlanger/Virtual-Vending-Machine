@@ -18,8 +18,8 @@ namespace Capstone.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     string date = DateTime.Now.ToString();
-                    decimal moneyFed = fedMoney;
-                    decimal purchases = price;
+                    decimal moneyFed = 0;
+                    decimal purchases = 0;
                     sw.WriteLine( date + "$"+moneyFed +"$"+ purchases);
                 }
             }
