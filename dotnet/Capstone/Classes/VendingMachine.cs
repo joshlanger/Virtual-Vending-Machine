@@ -24,7 +24,7 @@ namespace Capstone.Classes
                 else
                 {
                     Item foo = kvp.Value.Pop();
-                    Console.WriteLine($"{kvp.Key.PadRight(5)} {foo.Name.PadRight(20)} {foo.Price} \t{kvp.Value.Count + 1}");
+                    Console.WriteLine($"{kvp.Key.PadRight(5)} {foo.Name.PadRight(20)} ${foo.Price} \t{kvp.Value.Count + 1}");
                     kvp.Value.Push(foo);
                 }
                 
@@ -108,11 +108,12 @@ namespace Capstone.Classes
                 {
                     InitialBalance = fedMoney;
                     fedMoney = fedMoney - Price;
-                    Console.WriteLine($"{desiredItem.Name} {desiredItem.Price}");
-                    Console.WriteLine(fedMoney);
+                    Console.WriteLine($"{desiredItem.Name} ${desiredItem.Price}");
+                    Console.WriteLine($"Current balance remaining: ${fedMoney}");
                     Change = fedMoney;
                     
                     Console.WriteLine(desiredItem.EatingSoundEffects());
+                    Console.WriteLine();
                     MmmmGood = desiredItem.EatingSoundEffects();
                     return fedMoney;
                 }
