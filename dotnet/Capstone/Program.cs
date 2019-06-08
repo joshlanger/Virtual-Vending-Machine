@@ -63,13 +63,16 @@ namespace Capstone
                             {
                                 VendingMachine.DisplayItems();
                                 Console.WriteLine("Please type your selection(ex. A1)");
-                                string selectedProduct = Console.ReadLine();
+                                string selectedProduct = Console.ReadLine().ToUpper();
                                 if(VendingMachine.vendMachine.ContainsKey(selectedProduct))
                                 {
                                     fedMoney = VendingMachine.PurchaseItem(selectedProduct, fedMoney);
-                                    
                                 }
-
+                                else
+                                {
+                                    Console.WriteLine("Incorrect entry. Item does not exist!");
+                                    Console.WriteLine();
+                                }
                             }
                             if (selection == "3")
                             {

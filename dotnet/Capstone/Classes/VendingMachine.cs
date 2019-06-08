@@ -35,6 +35,12 @@ namespace Capstone.Classes
         public static decimal FeedMoney(string fedMoneyString)
         {
             decimal fedMoney = decimal.Parse(fedMoneyString);
+            if(fedMoney % 1 != 0)
+            {
+                Console.WriteLine("Transaction canceled. You didn't enter a whole dollar amount.");
+                return 0;
+            }
+            Console.WriteLine("You have added $" + fedMoney);
             return fedMoney;
         }
 
@@ -76,8 +82,6 @@ namespace Capstone.Classes
             {
                 Console.WriteLine(nickles + " nickle(s)");
             }
-            
-            Console.WriteLine(MmmmGood);
         }    
         public static void MainMenu(string choice)
         {
@@ -91,6 +95,7 @@ namespace Capstone.Classes
             if (vendMachine[selectedProducted].Count == 0)
             {
                 Console.WriteLine("Item Sold Out");
+                Console.WriteLine();
                 return fedMoney;
             }
             
@@ -103,14 +108,18 @@ namespace Capstone.Classes
                 {
                     InitialBalance = fedMoney;
                     fedMoney = fedMoney - Price;
+                    Console.WriteLine($"{desiredItem.Name} {desiredItem.Price}");
                     Console.WriteLine(fedMoney);
                     Change = fedMoney;
-                    MmmmGood += desiredItem.EatingSoundEffects() +" ";
+                    
+                    Console.WriteLine(desiredItem.EatingSoundEffects());
+                    MmmmGood = desiredItem.EatingSoundEffects();
                     return fedMoney;
                 }
                 if (fedMoney < Price)
                 {
-                    Console.WriteLine("Insufficient funds");
+                    Console.WriteLine("Insufficient funds!");
+                    Console.WriteLine();
                     vendMachine[selectedProducted].Push(desiredItem);
                 }
                 
