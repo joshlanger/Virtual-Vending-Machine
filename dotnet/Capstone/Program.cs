@@ -73,6 +73,7 @@ namespace Capstone
                             }
                             if (selection == "3")
                             {
+                                VendingMachine.DispenseChange(VendingMachine.Change, fedMoney);
                                 isComplete = true;
                                 fedMoney = 0;
                             }
