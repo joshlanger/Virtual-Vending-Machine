@@ -13,9 +13,11 @@ namespace Capstone
             {
                 
                 bool isComplete = false;
+                
                 while (!isComplete)
                 {
                     string choice = "";
+                    bool exitToMainMenu = false;
                     ReadInInputFile.InputInventory();
                     Console.WriteLine("Welcome to the Vend-Matic 500!");
                     Console.WriteLine();
@@ -42,8 +44,8 @@ namespace Capstone
                     {
                         
                         decimal fedMoney = 0;
-                        while (!isComplete)
-                        { 
+                        do
+                        {
                             Console.WriteLine("Purchase Menu");
                             Console.WriteLine("(1) Feed Money");
                             Console.WriteLine("(2) Select Product");
@@ -55,16 +57,25 @@ namespace Capstone
                                 Console.WriteLine("Please feed money in whole dollar amounts(ex. $1, $5, etc)");
                                 Console.WriteLine("How much money do you want to feed?");
                                 string fedMoneyString = Console.ReadLine();
-                                fedMoney += VendingMachine.FeedMoney(fedMoneyString);
+                                if(fedMoneyString == "1" || fedMoneyString == "5" || fedMoneyString == "10")
+                                {
+                                    fedMoney += VendingMachine.FeedMoney(fedMoneyString);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Incorrect dinomination. The money fed must be in Whole dollar amounts(ex. $1, $5, etc)");
+                                    Console.WriteLine();
+                                }
+                                
 
                             }
-
+                                                     
                             if (selection == "2")
                             {
                                 VendingMachine.DisplayItems();
                                 Console.WriteLine("Please type your selection(ex. A1)");
                                 string selectedProduct = Console.ReadLine().ToUpper();
-                                if(VendingMachine.vendMachine.ContainsKey(selectedProduct))
+                                if (VendingMachine.vendMachine.ContainsKey(selectedProduct))
                                 {
                                     fedMoney = VendingMachine.PurchaseItem(selectedProduct, fedMoney);
                                 }
@@ -77,27 +88,34 @@ namespace Capstone
                             if (selection == "3")
                             {
                                 VendingMachine.DispenseChange(VendingMachine.Change, fedMoney);
-                                //isComplete = true;
+                                //LogSales.LogPurchases(VendingMachine.FeedMoney, VendingMachine.Change, VendingMachine.vendMachine);
+                                Console.WriteLine("Are sure you want to finish you transaction? ");
+                                string exitQuestion = Console.ReadLine().ToUpper();
+                                if (exitQuestion == "N")
+                                {
+                                    exitToMainMenu = false;
+                                }
+                                if(exitQuestion == "Y")
+                                {
+                                    exitToMainMenu = true;
+                                  
+                                }
+                                
                                 fedMoney = 0;
                             }
 
                         }
+                        while (!exitToMainMenu);
 
                     }
-                    //ReadInInputFile.InputInventory();
-                    //Console.WriteLine("Welcome to the Vend-Matic 500!");
-                    //Console.WriteLine();
-                    //Console.WriteLine("Please see our menu options below.");
-                    //Console.WriteLine("(1) Display items");
-                    //Console.WriteLine("(2) Purchase");
-                    //choice = Console.ReadLine();
+                   
 
                     Console.ReadLine();
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
 
         }

@@ -31,7 +31,12 @@ namespace Capstone.Classes
             }
 
         }
-        
+
+        internal static decimal FeedMoney()
+        {
+            throw new NotImplementedException();
+        }
+
         public static decimal FeedMoney(string fedMoneyString)
         {
             decimal fedMoney = decimal.Parse(fedMoneyString);
