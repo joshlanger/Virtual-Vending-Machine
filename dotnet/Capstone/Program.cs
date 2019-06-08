@@ -13,37 +13,37 @@ namespace Capstone
             {
                 
                 bool isComplete = false;
-                //do { } while (!isComplete);
+                while (!isComplete)
                 {
-                    string choice = "1";
-                    while (choice == "1")
-                    //do
+                    string choice = "";
+                    ReadInInputFile.InputInventory();
+                    Console.WriteLine("Welcome to the Vend-Matic 500!");
+                    Console.WriteLine();
+                    Console.WriteLine("Please see our menu options below.");
+                    Console.WriteLine("(1) Display items");
+                    Console.WriteLine("(2) Purchase");
+                    choice = Console.ReadLine();
+                    if (choice == "1")
                     {
-                        ReadInInputFile.InputInventory();
-                        Console.WriteLine("What would you like to do?");
-                        Console.WriteLine("(1) Display items");
-                        Console.WriteLine("(2) Purchase");
+                        
+                        VendingMachine.DisplayItems();
+                        Console.WriteLine("Please press(2) to make a purchase: ");
                         choice = Console.ReadLine();
+                        //VendingMachine.MainMenu(choice);
+                        //choice = Console.ReadLine();
+                            
+                        
+                    
 
-
-                        if (choice == "1")
-                        {
-                            VendingMachine.DisplayItems();
-                            Console.ReadLine();
-                            VendingMachine.MainMenu(choice);
-                        }
-                        //} while (choice == "1");
                     }
+                      //} while (choice != "1");
+                    
                     if (choice == "2")
                     {
                         
                         decimal fedMoney = 0;
                         while (!isComplete)
                         { 
-                            //if(fedMoney != 0)
-                            //{
-                            //    isComplete = true;
-                            //}
                             Console.WriteLine("Purchase Menu");
                             Console.WriteLine("(1) Feed Money");
                             Console.WriteLine("(2) Select Product");
@@ -74,12 +74,21 @@ namespace Capstone
                             if (selection == "3")
                             {
                                 VendingMachine.DispenseChange(VendingMachine.Change, fedMoney);
-                                isComplete = true;
+                                //isComplete = true;
                                 fedMoney = 0;
                             }
 
                         }
+
                     }
+                    //ReadInInputFile.InputInventory();
+                    //Console.WriteLine("Welcome to the Vend-Matic 500!");
+                    //Console.WriteLine();
+                    //Console.WriteLine("Please see our menu options below.");
+                    //Console.WriteLine("(1) Display items");
+                    //Console.WriteLine("(2) Purchase");
+                    //choice = Console.ReadLine();
+
                     Console.ReadLine();
                 }
             }
