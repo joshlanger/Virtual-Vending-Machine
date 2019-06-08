@@ -36,8 +36,8 @@ namespace Capstone.Classes
             int quarters = 0;
             int dimes = 0;
             int nickle = 0;
-
-            for (decimal i = fedMoney; i > 0.00M; i--)
+            Console.WriteLine("Dispensing change ($" + fedMoney +")");
+            while (fedMoney != 0)
             {
                 if (fedMoney >= 0.25M)
                 {
@@ -57,7 +57,19 @@ namespace Capstone.Classes
                 }
                 
             }
-            Console.WriteLine(quarters + " quarters, " + dimes + " dimes, and " + nickle + " nickles.");
+            if (quarters > 0)
+            {
+                Console.WriteLine(quarters + " quarter(s)");
+            }
+            if (dimes > 0)
+            {
+                Console.WriteLine(dimes + " dime(s)");
+            }
+            if (nickle > 0)
+            {
+                Console.WriteLine(nickle + " nickle(s)");
+            }
+            
             Console.WriteLine(MmmmGood);
         }    
         public static void MainMenu(string choice)
