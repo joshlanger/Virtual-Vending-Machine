@@ -45,6 +45,7 @@ namespace Capstone.Classes
                 Console.WriteLine("Transaction canceled. You didn't enter a whole dollar amount.");
                 return 0;
             }
+            LogSales.FedMoneyLog(fedMoneyString);
             Console.WriteLine("You have added $" + fedMoney);
             return fedMoney;
         }
@@ -116,7 +117,7 @@ namespace Capstone.Classes
                     Console.WriteLine($"{desiredItem.Name} ${desiredItem.Price}");
                     Console.WriteLine($"Current balance remaining: ${fedMoney}");
                     Change = fedMoney;
-                    
+                    //LogSales.LogPurchases()
                     Console.WriteLine(desiredItem.EatingSoundEffects());
                     Console.WriteLine();
                     MmmmGood = desiredItem.EatingSoundEffects();
