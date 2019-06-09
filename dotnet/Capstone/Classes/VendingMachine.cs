@@ -6,11 +6,6 @@ namespace Capstone.Classes
 {
     public static class VendingMachine
     {
-        public static string MmmmGood { get; set; }
-        public static decimal InitialBalance { get; set; }
-        public static decimal CurrentBalance { get; set; }
-        public static bool BoughtDrink { get; set; }
-        public static decimal Change { get; set; }
         public static Dictionary<string, Stack<Item>> vendMachine = new Dictionary<string, Stack<Item>>();
         public static void DisplayItems()
         {
@@ -40,11 +35,6 @@ namespace Capstone.Classes
         public static decimal FeedMoney(string fedMoneyString)
         {
             decimal fedMoney = decimal.Parse(fedMoneyString);
-            if(fedMoney % 1 != 0)
-            {
-                Console.WriteLine("Transaction canceled. You didn't enter a whole dollar amount.");
-                return 0;
-            }
             LogSales.FedMoneyLog(fedMoneyString);
             Console.WriteLine("You have added $" + fedMoney);
             return fedMoney;
@@ -114,16 +104,13 @@ namespace Capstone.Classes
                 decimal price = desiredItem.Price;
                 if (fedMoney >= price)
                 {
-                    LogSales.LogPurchases(fedMoney, price, name);
-                    InitialBalance = fedMoney;
+                    LogSales.LogPurchases(fedMoney, selectedProducted, name, price);
                     fedMoney = fedMoney - price;
                     Console.WriteLine($"{desiredItem.Name} ${desiredItem.Price}");
                     Console.WriteLine($"Current balance remaining: ${fedMoney}");
-                    Change = fedMoney;
-                    //LogSales.LogPurchases()
                     Console.WriteLine(desiredItem.EatingSoundEffects());
                     Console.WriteLine();
-                    MmmmGood = desiredItem.EatingSoundEffects();
+                   
                     return fedMoney;
                 }
                 if (fedMoney < price)
