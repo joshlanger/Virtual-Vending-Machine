@@ -8,7 +8,7 @@ namespace Capstone.Classes
     public static class LogSales
     {
 
-        public static void LogPurchases(string fedMoney, decimal price, string change)
+        public static void LogPurchases(decimal fedMoney, decimal price, string name)
         {
             string directory = Environment.CurrentDirectory;
             string filename = "Log.txt";
@@ -55,7 +55,7 @@ namespace Capstone.Classes
             }
 
         }
-        public static void ReturnMoneyLog(string fedMoney)
+        public static void ReturnMoneyLog(string fedMoneyString)
         {
             string directory = Environment.CurrentDirectory;
             string filename = "Log.txt";
@@ -66,8 +66,12 @@ namespace Capstone.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     string date = DateTime.Now.ToString();
-                    fedMoney = fedMoney + ".00";                   
-                    sw.WriteLine($"{date} FEED MONEY: ${fedMoney.PadRight(10)}  ${fedMoney.PadRight(10)}" );
+                    if (!fedMoneyString.Contains("."))
+                    {
+                        fedMoneyString = fedMoneyString + ".00";
+                    }
+                    string zero = "0.00";
+                    sw.WriteLine($"{date} GIVE CHANGE: ${fedMoneyString.PadRight(10)}  ${zero.PadRight(10)}" );
                 }
             }
             catch (IOException e)

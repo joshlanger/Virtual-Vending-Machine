@@ -87,7 +87,7 @@ namespace Capstone
                             }
                             if (selection == "3")
                             {
-                                VendingMachine.DispenseChange(VendingMachine.Change, fedMoney);
+                                VendingMachine.DispenseChange(fedMoney);
                                 //LogSales.LogPurchases(VendingMachine.FeedMoney, VendingMachine.Change, VendingMachine.vendMachine);
                                 Console.WriteLine("Are sure you want to finish you transaction? ");
                                 string exitQuestion = Console.ReadLine().ToUpper();

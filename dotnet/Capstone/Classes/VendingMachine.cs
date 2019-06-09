@@ -50,12 +50,14 @@ namespace Capstone.Classes
             return fedMoney;
         }
 
-        public static void DispenseChange(decimal change, decimal fedMoney)
+        public static void DispenseChange(decimal fedMoney)
         {
             int quarters = 0;
             int dimes = 0;
             int nickles = 0;
+            string fedMoneyString = fedMoney.ToString();
             Console.WriteLine("Dispensing change ($" + fedMoney +")");
+            LogSales.ReturnMoneyLog(fedMoneyString);
             while (fedMoney != 0)
             {
                 if (fedMoney >= 0.25M)
@@ -108,12 +110,13 @@ namespace Capstone.Classes
             else
             {
                 Item desiredItem = vendMachine[selectedProducted].Pop();
-                string Name = desiredItem.Name;
-                decimal Price = desiredItem.Price;
-                if (fedMoney >= Price)
+                string name = desiredItem.Name;
+                decimal price = desiredItem.Price;
+                if (fedMoney >= price)
                 {
+                    LogSales.LogPurchases(fedMoney, price, name);
                     InitialBalance = fedMoney;
-                    fedMoney = fedMoney - Price;
+                    fedMoney = fedMoney - price;
                     Console.WriteLine($"{desiredItem.Name} ${desiredItem.Price}");
                     Console.WriteLine($"Current balance remaining: ${fedMoney}");
                     Change = fedMoney;
@@ -123,7 +126,7 @@ namespace Capstone.Classes
                     MmmmGood = desiredItem.EatingSoundEffects();
                     return fedMoney;
                 }
-                if (fedMoney < Price)
+                if (fedMoney < price)
                 {
                     Console.WriteLine("Insufficient funds!");
                     Console.WriteLine();
