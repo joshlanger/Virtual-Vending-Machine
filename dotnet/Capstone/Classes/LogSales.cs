@@ -8,7 +8,7 @@ namespace Capstone.Classes
     public static class LogSales
     {
 
-        public static void LogPurchases(decimal fedMoney, decimal price, string name)
+        public static void LogPurchases(decimal fedMoney, string selectedProduct, string name, decimal price)
         {
             string directory = Environment.CurrentDirectory;
             string filename = "Log.txt";
@@ -19,11 +19,18 @@ namespace Capstone.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     string date = DateTime.Now.ToString();
-                    string slot = "";
-                    string itemName = ""; 
-                    decimal moneyFed = 0;
-                    decimal purchases = 0;
-                    sw.WriteLine( date + "$"+moneyFed +"$"+ purchases);
+                    string fedMoneyString = fedMoney.ToString();
+                    decimal balance = fedMoney - price;
+                    string balanceString = balance.ToString();
+                    if(!fedMoneyString.Contains("."))
+                    {
+                        fedMoneyString = fedMoneyString + ".00";
+                    }
+                    if(!balanceString.Contains("."))
+                    {
+                        balanceString = balanceString + ".00";
+                    }
+                    sw.WriteLine($"{date} {name.PadRight(15)} {selectedProduct}  ${fedMoneyString.PadRight(10)}  ${balanceString.PadRight(10)}");
                 }
             }
             catch(IOException e)
@@ -41,11 +48,12 @@ namespace Capstone.Classes
 
             try
             {
+                string feedMoney = "FEED MONEY:";
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     string date = DateTime.Now.ToString();
                     fedMoney = fedMoney + ".00";                   
-                    sw.WriteLine($"{date} FEED MONEY: ${fedMoney.PadRight(10)}  ${fedMoney.PadRight(10)}" );
+                    sw.WriteLine($"{date} {feedMoney.PadRight(19)} ${fedMoney.PadRight(10)}  ${fedMoney.PadRight(10)}" );
                 }
             }
             catch (IOException e)
@@ -66,12 +74,13 @@ namespace Capstone.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     string date = DateTime.Now.ToString();
+                    string giveChange = "GIVE CHANGE:";
                     if (!fedMoneyString.Contains("."))
                     {
                         fedMoneyString = fedMoneyString + ".00";
                     }
                     string zero = "0.00";
-                    sw.WriteLine($"{date} GIVE CHANGE: ${fedMoneyString.PadRight(10)}  ${zero.PadRight(10)}" );
+                    sw.WriteLine($"{date} {giveChange.PadRight(19)} ${fedMoneyString.PadRight(10)}  ${zero.PadRight(10)}" );
                 }
             }
             catch (IOException e)

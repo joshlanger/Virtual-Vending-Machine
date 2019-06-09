@@ -30,16 +30,8 @@ namespace Capstone
                         
                         VendingMachine.DisplayItems();
                         Console.WriteLine("Please press(2) to make a purchase: ");
-                        choice = Console.ReadLine();
-                        //VendingMachine.MainMenu(choice);
-                        //choice = Console.ReadLine();
-                            
-                        
-                    
-
-                    }
-                      //} while (choice != "1");
-                    
+                        choice = Console.ReadLine();                 
+                    }       
                     if (choice == "2")
                     {
                         
@@ -54,10 +46,10 @@ namespace Capstone
                             string selection = Console.ReadLine();
                             if (selection == "1")
                             {
-                                Console.WriteLine("Please feed money in whole dollar amounts(ex. $1, $5, etc)");
+                                Console.WriteLine("Please feed money in whole dollar amounts($1, $5, $10, or $20)");
                                 Console.WriteLine("How much money do you want to feed?");
                                 string fedMoneyString = Console.ReadLine();
-                                if(fedMoneyString == "1" || fedMoneyString == "5" || fedMoneyString == "10")
+                                if(fedMoneyString == "1" || fedMoneyString == "5" || fedMoneyString == "10" || fedMoneyString == "20")
                                 {
                                     fedMoney += VendingMachine.FeedMoney(fedMoneyString);
                                 }
@@ -66,10 +58,7 @@ namespace Capstone
                                     Console.WriteLine("Incorrect dinomination. The money fed must be in Whole dollar amounts(ex. $1, $5, etc)");
                                     Console.WriteLine();
                                 }
-                                
-
-                            }
-                                                     
+                            }                                                    
                             if (selection == "2")
                             {
                                 VendingMachine.DisplayItems();
@@ -88,7 +77,6 @@ namespace Capstone
                             if (selection == "3")
                             {
                                 VendingMachine.DispenseChange(fedMoney);
-                                //LogSales.LogPurchases(VendingMachine.FeedMoney, VendingMachine.Change, VendingMachine.vendMachine);
                                 Console.WriteLine("Are sure you want to finish you transaction? ");
                                 string exitQuestion = Console.ReadLine().ToUpper();
                                 if (exitQuestion == "N")
