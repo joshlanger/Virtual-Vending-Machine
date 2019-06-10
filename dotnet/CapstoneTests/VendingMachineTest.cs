@@ -26,17 +26,26 @@ namespace CapstoneTests
         [TestMethod]
         public void DispenseCorrectCoinsTest()
         {
-            int quarters = 0;
-            VendingMachine.DispenseChange(1M);
-            Assert.AreEqual(4, quarters);
+            decimal fedMoney = 1M;
+            ReadInInputFile.InputInventory();
+            VendingMachine.DispenseChange(fedMoney);
+            Assert.AreEqual(0, fedMoney);
         }
         [TestMethod]
-        public void PurchaseItemTest()
+        public void EnoughMoneyToPurchaseItemTest()
         {
-           
+            ReadInInputFile.InputInventory();
             decimal fedMoney = 2.30M;
             Assert.AreEqual(.80M, VendingMachine.PurchaseItem("B3", fedMoney));
+            Assert.AreEqual(1.55M, VendingMachine.PurchaseItem("D4", fedMoney));
         }
-        
+        [TestMethod]
+        public void NotEnoughMoneyToPurchaseItemTest()
+        {
+            ReadInInputFile.InputInventory();
+            decimal fedMoney = 1.00M;
+            Assert.AreEqual(1.00M, VendingMachine.PurchaseItem("A1", fedMoney));
+            Assert.AreEqual(1.00M, VendingMachine.PurchaseItem("B3", fedMoney));
+        }
     }
 }

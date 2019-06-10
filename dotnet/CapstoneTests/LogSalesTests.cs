@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Capstone.Classes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,11 +7,12 @@ using System.Text;
 namespace CapstoneTests
 {
     [TestClass]
-    class LogSalesTests
+    public class LogSalesTests
     {
         [TestMethod]
-        public void LogPurchasesTest(decimal fedMoney, string selectedProduct, string name, decimal price)
+        public void LogPurchasesTest()
         {
+            ReadInInputFile.InputInventory();
             
         }
     }
