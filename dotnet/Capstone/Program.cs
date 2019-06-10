@@ -55,7 +55,7 @@ namespace Capstone
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Incorrect dinomination. The money fed must be in Whole dollar amounts(ex. $1, $5, etc)");
+                                    Console.WriteLine("Incorrect denomination. The money fed must be in whole dollar amounts(ex. $1, $5, etc)");
                                     Console.WriteLine();
                                 }
                             }                                                    

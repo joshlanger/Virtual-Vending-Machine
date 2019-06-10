@@ -81,13 +81,7 @@ namespace Capstone.Classes
                 Console.WriteLine(nickles + " nickle(s)");
             }
         }    
-        public static void MainMenu(string choice)
-        {
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("(1) Display items");
-            Console.WriteLine("(2) Purchase");
-            choice = Console.ReadLine();
-        }
+        
         public static decimal PurchaseItem(string selectedProducted, decimal fedMoney)
         {
             if (vendMachine[selectedProducted].Count == 0)
