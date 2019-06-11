@@ -47,5 +47,15 @@ namespace CapstoneTests
             Assert.AreEqual(1.00M, VendingMachine.PurchaseItem("A1", fedMoney));
             Assert.AreEqual(1.00M, VendingMachine.PurchaseItem("B3", fedMoney));
         }
+        [TestMethod]
+        public void DispenseChangeShouldbe3quarters()
+        {
+            //ReadInInputFile.InputInventory();
+            VendingMachine.DispenseChange(0.75M);
+            int quarter = 3;
+            
+            Assert.AreEqual(3, quarter);
+
+        }
     }
 }

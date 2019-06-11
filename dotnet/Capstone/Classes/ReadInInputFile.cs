@@ -5,8 +5,15 @@ using System.Text;
 
 namespace Capstone.Classes
 {
+    /*ReadInInputFile class uses StreamReader to read in the VendingMaching
+     * inventory and instatiates a new SlotStack which pushes inventory 
+     * to the SlotStack by ItemType (Chips, Gum, etc.). 
+     * Finally, SlotStack is added to the VendingMachine dictionary by calling
+     * VendingMachine.VendMachine.Add().
+     */
     public static class ReadInInputFile
     {
+        
        public static void InputInventory()
         {
             string directory = Environment.CurrentDirectory;
@@ -14,8 +21,8 @@ namespace Capstone.Classes
             string fullPath = Path.Combine(directory, filename);
 
             try
-            {
-                using(StreamReader sr = new StreamReader(fullPath, false))
+            {   //Reads in vending machine inventory.
+                using (StreamReader sr = new StreamReader(fullPath, false))
                 {
                     while (!sr.EndOfStream)
                     {
@@ -26,9 +33,10 @@ namespace Capstone.Classes
                         string name = input[1];
                         decimal price = decimal.Parse(input[2]);
                         string itemType = input[3];
-                       
-                        
 
+
+                        //Instatiates a new SlotStack which pushes inventory 
+                        //to the SlotStack by ItemType(Chips, Gum, etc.).
                         Stack<Item> SlotStack = new Stack<Item>();
                         for (int i = 0; i < 5; i++)
                         {
@@ -54,13 +62,17 @@ namespace Capstone.Classes
                             }
                             
                         }
-                        
+                        /*SlotStack is added to the VendingMachine dictionary 
+                         * by calling VendingMachine.VendMachine.Add().*/
                         VendingMachine.vendMachine.Add(slot, SlotStack);
 
                     }
 
                 }
             }
+            /*Throws execption message if user attempts to 
+             * use an invalid file or directory, 
+            and writes "Invalid File or Directory."*/
             catch(IOException e)
             {
                 Console.WriteLine("Invalid File or Direcory.");
